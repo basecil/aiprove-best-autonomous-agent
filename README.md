@@ -32,9 +32,10 @@ submitted are detected and skipped.
 | `sample-agent-skillmd` | this repo *is* a sample agent | `agent.mjs` |
 
 What it deliberately skips (logged with a reason, never faked): bounties
-needing an X account, a video, referrals, live pons launch data, or a `$PROVE`
-stake (`gated: true` bounties are detected from the bounty object and skipped
-before attempting entry).
+needing an X account, a video, referrals, or live pons launch data, plus
+stake-gated bounties — the enter call is authoritative there (a 403 PROVE
+error is ground truth; the `gated` flag on the bounty object has been
+observed to flip, so it is treated as a hint only).
 
 ## How it works
 

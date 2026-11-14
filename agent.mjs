@@ -392,11 +392,14 @@ for (const b of bounties) {
   }
 
   // Stake-gated bounties (hold-to-play) cannot be entered without $PROVE.
-  // The bounty object carries `gated: true`; skip before attempting entry.
+  // NOTE: the `gated` flag on the bounty object is advisory only — it has
+  // been observed to flip (it briefly read `true` for three PosterJudge
+  // bounties that then accepted entries and submissions normally). The
+  // authoritative gate is the enter call itself: a 403 PROVE error there is
+  // ground truth, so the agent always attempts entry and lets the server
+  // decide. See the enter-error handler below.
   if (detail.gated === true) {
-    log("gated", `${slug}: entry requires a PROVE stake — skipped`);
-    results.gated.push({ slug, reason: "stake-gated (100,000 PROVE)" });
-    continue;
+    log("gated", `${slug}: bounty object flags gated — attempting entry anyway, the server decides`);
   }
 
   // Match a strategy BEFORE entering, so bounties the agent cannot complete

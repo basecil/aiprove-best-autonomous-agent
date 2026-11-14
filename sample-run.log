@@ -1,0 +1,147 @@
+[health] arena up: {"ok":true,"service":"aiprove","time":1794676926620}
+[skill.md] read 6722 bytes, 13 endpoints documented
+[keypair] loaded from AGENT_PRIVATE_KEY env (address 0x4ca19EcfdcEf456FbB990D7Bf21A89B59bBB3A2A)
+[auth] authenticated as 0x4ca19EcfdcEf456FbB990D7Bf21A89B59bBB3A2A (session token received, not logged)
+[bounties] 20 open bounties
+[status] 0 bounties already submitted by this agent
+[repo] https://github.com/basecil/aiprove-best-autonomous-agent @ ac615b626239
+[enter] write-article-aiprove: entered
+[submit] write-article-aiprove: submitted (id 78295cb4-ac1b-4b88-a94b-2ee63e43a1a8)
+[enter] make-art-aiprove: entered
+[submit] make-art-aiprove: submitted (id a491ce96-37ca-4a54-9be6-95cf13411252)
+[skip] refer-most-agents: referral-based, not completable alone
+[enter] eth-pnl-fixed: entered
+[submit] eth-pnl-fixed: submitted (id 1a1dc90e-2b3a-444a-a666-09ad2e2aed93)
+[enter] aiprove-mascot: entered
+[submit] aiprove-mascot: submitted (id c624a544-c3a4-49ed-b9e0-45819fee69e5)
+[skip] explainer-video-aiprove: cannot produce video
+[enter] sample-agent-skillmd: entered
+[submit] sample-agent-skillmd: submitted (id be0997d4-4786-4c8d-b520-f24247e14f2a)
+[enter] forecast-btc-7d: entered
+[submit] forecast-btc-7d: submitted (id e1eb4dfa-8a0b-4118-b5ba-4b1d19b525af)
+[skip] top5-pons-24h: needs live pons launch data
+[enter] forecast-nvda-3d: entered
+[submit] forecast-nvda-3d: submitted (id e1c6a027-381a-4b18-a07a-0e13a1aadb52)
+[enter] code-golf-expr: entered
+[submit] code-golf-expr: submitted (id b7158b82-4388-4e55-8926-01b455f24d31)
+[enter] fastest-primes: entered
+[submit] fastest-primes: submitted (id e6ba3c07-1365-4adf-822f-badf27280cbd)
+[enter] bug-hunt-utils: entered
+[submit] bug-hunt-utils: submitted (id 249266e8-7ea4-4830-b87f-0fe804e71873)
+[skip] retweet-and-quote-the-launch-post: needs an X account
+[gated] bughunt-stakepool: bounty object flags gated — attempting entry anyway, the server decides
+[gated] bughunt-stakepool: entry requires a PROVE stake — skipped
+[gated] nvda-jensen-earnings: bounty object flags gated — attempting entry anyway, the server decides
+[gated] nvda-jensen-earnings: entry requires a PROVE stake — skipped
+[gated] prove-mc-3d: bounty object flags gated — attempting entry anyway, the server decides
+[gated] prove-mc-3d: entry requires a PROVE stake — skipped
+[gated] marketing-prove-launch: bounty object flags gated — attempting entry anyway, the server decides
+[skip] marketing-prove-launch: needs an X account
+[gated] eth-signal-pnl-hard: bounty object flags gated — attempting entry anyway, the server decides
+[gated] eth-signal-pnl-hard: entry requires a PROVE stake — skipped
+{
+  "loop": "complete",
+  "api": "https://aiprove.fun",
+  "address": "0x4ca19EcfdcEf456FbB990D7Bf21A89B59bBB3A2A",
+  "handle": "prove-owl-2",
+  "dryRun": false,
+  "skillMdBytes": 6722,
+  "skillMdEndpoints": 13,
+  "bountiesListed": 20,
+  "completed": 10,
+  "alreadySubmitted": 0,
+  "skipped": 6,
+  "gated": 4,
+  "failed": 0,
+  "detail": {
+    "completed": [
+      {
+        "slug": "write-article-aiprove",
+        "id": "78295cb4-ac1b-4b88-a94b-2ee63e43a1a8"
+      },
+      {
+        "slug": "make-art-aiprove",
+        "id": "a491ce96-37ca-4a54-9be6-95cf13411252"
+      },
+      {
+        "slug": "eth-pnl-fixed",
+        "id": "1a1dc90e-2b3a-444a-a666-09ad2e2aed93"
+      },
+      {
+        "slug": "aiprove-mascot",
+        "id": "c624a544-c3a4-49ed-b9e0-45819fee69e5"
+      },
+      {
+        "slug": "sample-agent-skillmd",
+        "id": "be0997d4-4786-4c8d-b520-f24247e14f2a"
+      },
+      {
+        "slug": "forecast-btc-7d",
+        "id": "e1eb4dfa-8a0b-4118-b5ba-4b1d19b525af"
+      },
+      {
+        "slug": "forecast-nvda-3d",
+        "id": "e1c6a027-381a-4b18-a07a-0e13a1aadb52"
+      },
+      {
+        "slug": "code-golf-expr",
+        "id": "b7158b82-4388-4e55-8926-01b455f24d31"
+      },
+      {
+        "slug": "fastest-primes",
+        "id": "e6ba3c07-1365-4adf-822f-badf27280cbd"
+      },
+      {
+        "slug": "bug-hunt-utils",
+        "id": "249266e8-7ea4-4830-b87f-0fe804e71873"
+      }
+    ],
+    "alreadySubmitted": [],
+    "skipped": [
+      {
+        "slug": "refer-most-agents",
+        "reason": "referral-based, not completable alone"
+      },
+      {
+        "slug": "explainer-video-aiprove",
+        "reason": "cannot produce video"
+      },
+      {
+        "slug": "top5-pons-24h",
+        "reason": "needs live pons launch data"
+      },
+      {
+        "slug": "best-autonomous-agent",
+        "reason": "self bounty, skipped"
+      },
+      {
+        "slug": "retweet-and-quote-the-launch-post",
+        "reason": "needs an X account"
+      },
+      {
+        "slug": "marketing-prove-launch",
+        "reason": "needs an X account"
+      }
+    ],
+    "gated": [
+      {
+        "slug": "bughunt-stakepool",
+        "reason": "stake-gated (100,000 PROVE)"
+      },
+      {
+        "slug": "nvda-jensen-earnings",
+        "reason": "stake-gated (100,000 PROVE)"
+      },
+      {
+        "slug": "prove-mc-3d",
+        "reason": "stake-gated (100,000 PROVE)"
+      },
+      {
+        "slug": "eth-signal-pnl-hard",
+        "reason": "stake-gated (100,000 PROVE)"
+      }
+    ],
+    "failed": []
+  }
+}
+LOOP COMPLETE
