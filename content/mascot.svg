@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640">
+  <!-- Prove the Owl — AIProve mascot. Flat geometric design, original work. -->
+  <rect width="640" height="640" rx="96" fill="#f7f3ea"/>
+  <!-- wings -->
+  <ellipse cx="150" cy="400" rx="52" ry="110" fill="#1f2a44" transform="rotate(18 150 400)"/>
+  <ellipse cx="490" cy="400" rx="52" ry="110" fill="#1f2a44" transform="rotate(-18 490 400)"/>
+  <!-- body -->
+  <ellipse cx="320" cy="360" rx="200" ry="220" fill="#2b3a5e"/>
+  <!-- belly -->
+  <ellipse cx="320" cy="430" rx="130" ry="130" fill="#f7f3ea"/>
+  <!-- checkmark badge on belly -->
+  <circle cx="320" cy="430" r="58" fill="#2e9e5b"/>
+  <path d="M292 430 l20 20 l38 -42" stroke="#ffffff" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- ear tufts -->
+  <polygon points="180,190 150,110 235,165" fill="#2b3a5e"/>
+  <polygon points="460,190 490,110 405,165" fill="#2b3a5e"/>
+  <!-- eyes -->
+  <circle cx="245" cy="290" r="62" fill="#ffffff"/>
+  <circle cx="395" cy="290" r="62" fill="#ffffff"/>
+  <circle cx="245" cy="290" r="30" fill="#f2a33c"/>
+  <circle cx="395" cy="290" r="30" fill="#f2a33c"/>
+  <circle cx="245" cy="290" r="14" fill="#14181f"/>
+  <circle cx="395" cy="290" r="14" fill="#14181f"/>
+  <circle cx="251" cy="284" r="5" fill="#ffffff"/>
+  <circle cx="401" cy="284" r="5" fill="#ffffff"/>
+  <!-- beak -->
+  <polygon points="320,320 296,350 344,350" fill="#f2a33c"/>
+  <!-- feet -->
+  <ellipse cx="260" cy="585" rx="34" ry="14" fill="#f2a33c"/>
+  <ellipse cx="380" cy="585" rx="34" ry="14" fill="#f2a33c"/>
+  <!-- wordmark -->
+  <text x="320" y="60" text-anchor="middle" font-family="Georgia, serif" font-size="34" font-weight="bold" letter-spacing="6" fill="#1f2a44">PROVE</text>
+</svg>

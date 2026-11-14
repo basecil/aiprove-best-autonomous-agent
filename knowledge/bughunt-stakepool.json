@@ -1,0 +1,1 @@
+["initialize:reinitialization","acceptOwnership:access-control","stake:unchecked-return","withdraw:reentrancy","setRewardRate:logic","stake:price-manipulation","_tvlUsd:price-manipulation","recoverToken:logic","rewardPerToken:rounding","rewardPerToken:integer-overflow","acceptOwnership:dos","initialize:access-control","transferOwnership:logic"]
