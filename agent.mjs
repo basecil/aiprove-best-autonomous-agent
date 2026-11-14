@@ -244,6 +244,14 @@ function repoSubmission(transcript) {
   return { repoUrl, commit, transcript, handle: HANDLE };
 }
 
+// PosterJudge ("link") bounties take a URL to the work + a note for the judge
+// (the site's own submit form posts { link, note }). The link points at the
+// file in this repo, pinned to the exact commit the agent is running from.
+function linkSubmission(relPath, note) {
+  if (!repoUrl || !commit) throw new Error("no repo identity available for a link submission");
+  return { link: `${repoUrl}/blob/${commit}/${relPath}`, note, handle: HANDLE };
+}
+
 // Directional yes/no forecast from price momentum over `days`.
 async function directionalForecast(asset, days, brief) {
   let mom = 0;
@@ -305,12 +313,12 @@ const STRATEGIES = {
     "Autonomous entry: odd-only sieve, C fast path + Node fallback. Run command: solutions/fastest-primes/run.sh (reads N on stdin, prints prime count)."),
   "eth-pnl-fixed": () => repoSubmission(
     "Autonomous entry: dual moving-average crossover MA(32)/MA(128) on the frozen ETH bars. See solutions/eth-backtest/strategy.mjs; backtest +$16.90/unit, 14 trades."),
-  "write-article-aiprove": () => repoSubmission(
-    "Autonomous entry: honest explainer article about the AIProve board. See content/article.md."),
-  "make-art-aiprove": () => repoSubmission(
-    "Autonomous entry: broadsheet-style AIProve poster (original SVG). See content/poster.svg."),
-  "aiprove-mascot": () => repoSubmission(
-    "Autonomous entry: 'Prove the Owl' mascot (original SVG). See content/mascot.svg."),
+  "write-article-aiprove": () => linkSubmission("content/article.md",
+    "Honest explainer article about the AIProve board: how it works, what 'prove it' means, and the prototype caveats. Written by the autonomous agent itself."),
+  "make-art-aiprove": () => linkSubmission("content/poster.svg",
+    "Broadsheet-style AIProve poster (original SVG): masthead, 'Prove the Owl' mark, free-to-enter / graded-in-the-open / paid-in-stock."),
+  "aiprove-mascot": () => linkSubmission("content/mascot.svg",
+    "'Prove the Owl' — the AIProve mascot (original SVG): a flat geometric owl with a checkmark badge, broadsheet-meets-terminal colors."),
   "sample-agent-skillmd": () => repoSubmission(
     "Autonomous entry: this repo IS a sample agent — reads skill.md, authenticates with its own keypair, lists bounties, enters and completes them. See agent.mjs."),
   "bug-hunt-utils": () => ({
@@ -354,10 +362,10 @@ function inferStrategy(b) {
     return { run: () => signalForecast(asset) };
   }
   if (b.lane === "PosterJudge" && /article/i.test(text)) {
-    return { run: () => repoSubmission("Autonomous entry: explainer article. See content/article.md.") };
+    return { run: () => linkSubmission("content/article.md", "Explainer article about the AIProve board. See content/article.md.") };
   }
   if (/\b(mascot|poster|logo|art)\b/i.test(text)) {
-    return { run: () => repoSubmission("Autonomous entry: original SVG art. See content/.") };
+    return { run: () => linkSubmission("content/poster.svg", "Original SVG art for AIProve. See content/.") };
   }
   return { skip: "no autonomous strategy for this bounty type" };
 }
@@ -391,7 +399,18 @@ for (const b of bounties) {
     continue;
   }
 
-  // Enter first (free; submitting auto-enters, but entering proves the loop).
+  // Match a strategy BEFORE entering, so bounties the agent cannot complete
+  // never get a noise entry.
+  let plan;
+  if (STRATEGIES[slug]) plan = { run: STRATEGIES[slug] };
+  else plan = inferStrategy(detail);
+  if (plan.skip) {
+    log("skip", `${slug}: ${plan.skip}`);
+    results.skipped.push({ slug, reason: plan.skip });
+    continue;
+  }
+
+  // Enter (free; submitting auto-enters, but entering proves the loop).
   try {
     if (!DRY_RUN) await postJSON(`${API}/api/bounties/${slug}/enter`, { handle: HANDLE }, token);
     log("enter", `${slug}: entered`);
@@ -406,16 +425,6 @@ for (const b of bounties) {
     } else {
       log("enter", `${slug}: enter failed (${e.message}) — will still try to submit`);
     }
-  }
-
-  // Match a strategy.
-  let plan;
-  if (STRATEGIES[slug]) plan = { run: STRATEGIES[slug] };
-  else plan = inferStrategy(detail);
-  if (plan.skip) {
-    log("skip", `${slug}: ${plan.skip}`);
-    results.skipped.push({ slug, reason: plan.skip });
-    continue;
   }
 
   // Submit.
